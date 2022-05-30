@@ -1,5 +1,6 @@
 {
   "name": "fitness_life_app",
+  "homepage": "./",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,6 +15,5 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Aimarest/fitness_life_app/issues"
-  },
-  "homepage": "https://github.com/Aimarest/fitness_life_app#readme"
+  }
 }

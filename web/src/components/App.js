@@ -1,8 +1,8 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 //Services:
 import apiExercises from "../services/api-exercises";
-import apiUsers from "../services/api-users";
+import apiUser from "../services/api-users";
 import apiKitchenRecipes from "../services/api-kitchen-recipes";
 import router from "../services/router";
 import ls from "../services/local-storage";
@@ -21,47 +21,30 @@ import Footer from "./Footer";
 const App = () => {
   // state: user
   const identification = ls.get("userId", "");
-  const [userId, setUserId] = useState(identification);
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  const [userKitchenRecipes, setUserKitchenRecipes] = useState([]);
-  const [userTrainingExercises, setUserTrainingExercises] = useState([]);
-  const [allKitchenRecipes, setAllKitchenRecipes] = useState([]);
-  const [allTrainingExercises, setAllTrainingExercises] = useState([]);
   /*
-  Event: cerrar sesión.
-  Redireccionamos al inicio de la página.
-  Recargamos la página para que se borren todos los datos del estado de React.
-  */
-  const logout = () => {
-    router.redirect("/");
-    router.reload();
-    // he añadido esta sentencia para deslogear a la usuaria cuando pulsa el botón de 'Cerrar sesión'
-    setUserId("");
-  };
-
+  useEffect(() => {
+    fetch("https://localhost:4000") 
+      .then((response) => response.json())
+      .then((responseData) => {
+        // Cuando la API responde guardamos los datos en el estado para que se vuelva a renderizar el componente
+        (responseData);
+      });
+  }, []);
+*/
   return (
     <div className="App">
-      <Header isUserLogged={!!userId} logout={logout} />
-      <Switch>
-        <Route exact path="/">
-          <Beginning />{" "}
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/signup">
-          <SignUp />
-        </Route>
-        <Route path="/profile">
-          <Profile
-            userName={userName}
-            userEmail={userEmail}
-            userPassword={userPassword}
-          />
-        </Route>
-      </Switch>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Beginning />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/kitchenRecipes" element={<AllKitchenRecipes />} />
+        <Route path="/trainingExercises" element={<AllTrainigExercises />} />
+        <Route path="/myKitchenRecipes" element={<MyKitchenRecipes />} />
+        <Route path="/myTrainingExercises" element={<MyTrainingExercises />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+      <Footer />
     </div>
   );
 };
