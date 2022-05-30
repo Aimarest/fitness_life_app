@@ -15,5 +15,10 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Aimarest/fitness_life_app/issues"
+  },
+  "dependencies": {
+    "better-sqlite3": "^7.5.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.1"
   }
 }

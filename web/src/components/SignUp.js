@@ -24,7 +24,7 @@ const SignUp = (props) => {
     if (passwordErrorMessage !== false) {
       return (
         <p className="errorMessage">
-          Error in password:{" "}
+          Error in password:
           <span className="error">passwords are not the same</span>
         </p>
       );
@@ -36,7 +36,7 @@ const SignUp = (props) => {
     if (props.signUpErrorMessage !== "") {
       return (
         <p className="errorMessage">
-          Sign up error{" "}
+          Sign up error
           <span className="error">{props.signUpErrorMessage}</span>
         </p>
       );
