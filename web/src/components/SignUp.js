@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 const SignUp = (props) => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -11,7 +12,8 @@ const SignUp = (props) => {
 
     if (password === confirmPassword) {
       // Enviamos los datos a App y este al API
-      props.sendSingUpToApi({
+      props.sendSignUpToApi({
+        name: name,
         email: email,
         password: password,
       });
@@ -42,6 +44,9 @@ const SignUp = (props) => {
       );
     }
   };
+  const handleName = (ev) => {
+    setName(ev.target.value);
+  };
   const handleEmail = (ev) => {
     setEmail(ev.target.value);
   };
@@ -56,6 +61,17 @@ const SignUp = (props) => {
       {" "}
       <h1 className="title">Sign up</h1>
       <form className="formSignUp" onSubmit={handleForm}>
+        <label className="formSignUp__label" htmlFor="name">
+          Write your name
+        </label>
+        <input
+          className="formSignUp__input"
+          type="text"
+          name="name"
+          id="name"
+          value={name}
+          onChange={handleName}
+        />
         <label className="formSignUp__label" htmlFor="email">
           Write your email
         </label>
