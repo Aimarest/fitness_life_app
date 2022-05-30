@@ -21,23 +21,37 @@ import Footer from "./Footer";
 const App = () => {
   // state: user
   const identification = ls.get("userId", "");
-  /*
-  useEffect(() => {
-    fetch("https://localhost:4000") 
-      .then((response) => response.json())
-      .then((responseData) => {
-        // Cuando la API responde guardamos los datos en el estado para que se vuelva a renderizar el componente
-        (responseData);
-      });
-  }, []);
-*/
+  const [userId, setUserId] = useState(identification);
+  const [signUpErrorMessage, setSignUpErrorMessage] = useState("");
+  const sendSignUpToApi = (data) => {
+    // Limpiamos el error antes de enviar los datos al API
+    setSignUpErrorMessage("");
+    apiUser.sendSignUpToApi(data).then((response) => {
+      if (response.success === true) {
+        setUserId(response.userId);
+        // Si la usuaria introduce bien sus datos redireccionamos desde la página de signup a su página de inicio
+        router.redirect("/profile");
+      } else {
+        // Si la usuaria introduce mal sus datos guardamos el error que nos devuelve el API para que se pinte en la página
+        setSignUpErrorMessage(response.errorMessage);
+      }
+    });
+  };
   return (
     <div className="App">
       <Header />
       <Routes>
         <Route path="/" element={<Beginning />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route
+          path="/signup"
+          element={
+            <SignUp
+              signUpErrorMessage={signUpErrorMessage}
+              sendSignUpToApi={sendSignUpToApi}
+            />
+          }
+        />
         <Route path="/kitchenRecipes" element={<AllKitchenRecipes />} />
         <Route path="/trainingExercises" element={<AllTrainigExercises />} />
         <Route path="/myKitchenRecipes" element={<MyKitchenRecipes />} />
