@@ -71,3 +71,18 @@ server.post("/login", (req, res) => {
     });
   }
 });
+// Endpoint para la petición del array de ejercicios:
+server.get("/trainingExercises", (req, res) => {
+  //Preparamos la query:
+  const getExercises = db.prepare(`SELECT * FROM training`);
+  //Ejecutamos la query:
+  const allExercises = getExercises.all();
+  res.json({
+    success: true,
+    allExercises: allExercises,
+  });
+});
+
+// static server of images
+const staticServerImagesPathWeb = "./src/public-training-images/";
+server.use(express.static(staticServerImagesPathWeb));

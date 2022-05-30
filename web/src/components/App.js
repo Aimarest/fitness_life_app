@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 //Services:
-import apiExercises from "../services/api-exercises";
+import getAllExercises from "../services/api-exercises";
 import apiUser from "../services/api-users";
 import apiKitchenRecipes from "../services/api-kitchen-recipes";
 import router from "../services/router";
@@ -13,7 +13,7 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 import Profile from "./Profile";
 import AllKitchenRecipes from "./AllKitchenRecipes";
-import AllTrainigExercises from "./AllTrainingExercises";
+import TrainigExercises from "./AllTrainingExercises";
 import MyKitchenRecipes from "./MyKitchenRecipes";
 import MyTrainingExercises from "./MyTrainingExercises";
 import Footer from "./Footer";
@@ -24,6 +24,7 @@ const App = () => {
   const [userId, setUserId] = useState(identification);
   const [signUpErrorMessage, setSignUpErrorMessage] = useState("");
   const [loginErrorMessage, setLoginErrorMessage] = useState("");
+  const [AllTrainigExercises, setAllTrainingExercises] = useState([]);
   //useEffect para que cada vez que cambie el userId se guarde en el localStorage:
   useEffect(() => {
     setUserId(userId);
@@ -60,6 +61,13 @@ const App = () => {
       }
     });
   };
+  //Pedimos todos los ejercicios de entrenamiento al API:
+  useEffect(() => {
+    getAllExercises().then((data) => {
+      setAllTrainingExercises(data.allExercises);
+    });
+  }, [userId]);
+
   /*
   Event: cerrar sesión.
   Redireccionamos al inicio de la página.
@@ -96,7 +104,12 @@ const App = () => {
           }
         />
         <Route path="/kitchenRecipes" element={<AllKitchenRecipes />} />
-        <Route path="/trainingExercises" element={<AllTrainigExercises />} />
+        <Route
+          path="/trainingExercises"
+          element={
+            <TrainigExercises AllTrainigExercises={AllTrainigExercises} />
+          }
+        />
         <Route path="/myKitchenRecipes" element={<MyKitchenRecipes />} />
         <Route path="/myTrainingExercises" element={<MyTrainingExercises />} />
         <Route path="/profile" element={<Profile />} />
