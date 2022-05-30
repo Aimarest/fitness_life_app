@@ -11,5 +11,21 @@ const sendSignUpToApi = (data) => {
       return data;
     });
 };
-const objectToExport = { sendSignUpToApi: sendSignUpToApi };
+const sendLoginToApi = (data) => {
+  return fetch("http://localhost:4000/login", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+};
+const objectToExport = {
+  sendSignUpToApi: sendSignUpToApi,
+  sendLoginToApi: sendLoginToApi,
+};
 export default objectToExport;
+
+//Login

@@ -23,6 +23,10 @@ const App = () => {
   const identification = ls.get("userId", "");
   const [userId, setUserId] = useState(identification);
   const [signUpErrorMessage, setSignUpErrorMessage] = useState("");
+  const [loginErrorMessage, setLoginErrorMessage] = useState("");
+
+  //Enviamos datos de registro al API:
+
   const sendSignUpToApi = (data) => {
     // Limpiamos el error antes de enviar los datos al API
     setSignUpErrorMessage("");
@@ -37,12 +41,34 @@ const App = () => {
       }
     });
   };
+
+  // Enviamos datos de login al API:
+  const sendLoginToApi = (data) => {
+    setLoginErrorMessage("");
+    apiUser.sendLoginToApi(data).then((response) => {
+      if (response.success === true) {
+        setUserId(response.userId);
+        router.redirect("/profile");
+      } else {
+        // Si la usuaria introduce mal sus datos guardamos el error que nos devuelve el API para que se pinte en la página
+        setLoginErrorMessage(response.errorMessageLogin);
+      }
+    });
+  };
   return (
     <div className="App">
       <Header />
       <Routes>
         <Route path="/" element={<Beginning />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={
+            <Login
+              loginErrorMessage={loginErrorMessage}
+              sendLoginToApi={sendLoginToApi}
+            />
+          }
+        />
         <Route
           path="/signup"
           element={

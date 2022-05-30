@@ -42,7 +42,32 @@ server.post("/signup", (req, res) => {
   } else {
     res.json({
       success: false,
-      errorMessage: "Usuario/a ya existente",
+      errorMessage: "Existing user",
+    });
+  }
+});
+//Endpoint para LOGIN:
+
+server.post("/login", (req, res) => {
+  //Body params:
+  const emailLogin = req.body.email;
+  const passwordLogin = req.body.password;
+  //Preparamos la query:
+  const userLogin = db.prepare(
+    `SELECT * FROM users WHERE email = ? AND password = ?`
+  );
+  //Ejecutamos la query:
+  const foundUser = userLogin.get(emailLogin, passwordLogin);
+
+  if (foundUser === undefined) {
+    res.json({
+      success: false,
+      errorMessageLogin: "User not found",
+    });
+  } else {
+    res.json({
+      success: true,
+      userId: foundUser.id,
     });
   }
 });

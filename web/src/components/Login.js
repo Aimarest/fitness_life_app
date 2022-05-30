@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginErrorMessage, setLoginErrorMessage] = useState(false);
   const handleForm = (ev) => {
     ev.preventDefault();
+    setLoginErrorMessage(false);
   };
   const handleEmail = (ev) => {
     setEmail(ev.target.value);
@@ -11,6 +13,23 @@ const Login = () => {
   const handlePassword = (ev) => {
     setPassword(ev.target.value);
   };
+
+  const handleLogin = () => {
+    const data = {
+      email: email,
+      password: password,
+    };
+    props.sendLoginToApi(data);
+  };
+  const renderErrorMessage = () => {
+    // Si el API ha devuelto un error, APP lo guarda en el estado y nos lo pasa
+    if (props.loginErrorMessage !== "") {
+      return (
+        <p className="errorMessage">Login error: {props.loginErrorMessage}</p>
+      );
+    }
+  };
+
   return (
     <section>
       <h1 className="title">Login</h1>
@@ -38,7 +57,13 @@ const Login = () => {
           value={password}
           onChange={handlePassword}
         />
-        <input className="button" type="submit" value="Log in" />
+        <input
+          className="button"
+          type="submit"
+          value="Log in"
+          onClick={handleLogin}
+        />
+        {renderErrorMessage()}
       </form>
     </section>
   );
