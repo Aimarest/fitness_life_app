@@ -38,6 +38,7 @@ const Login = () => {
           value={password}
           onChange={handlePassword}
         />
+        <input className="button" type="submit" value="Log in" />
       </form>
     </section>
   );
