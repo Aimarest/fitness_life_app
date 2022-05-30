@@ -24,6 +24,11 @@ const App = () => {
   const [userId, setUserId] = useState(identification);
   const [signUpErrorMessage, setSignUpErrorMessage] = useState("");
   const [loginErrorMessage, setLoginErrorMessage] = useState("");
+  //useEffect para que cada vez que cambie el userId se guarde en el localStorage:
+  useEffect(() => {
+    setUserId(userId);
+    ls.set("userId", userId);
+  }, [userId]);
 
   //Enviamos datos de registro al API:
 
@@ -55,9 +60,21 @@ const App = () => {
       }
     });
   };
+  /*
+  Event: cerrar sesión.
+  Redireccionamos al inicio de la página.
+  Recargamos la página para que se borren todos los datos del estado de React.
+  */
+  const logout = () => {
+    router.redirect("/");
+    router.reload();
+    // Añadimos esta sentencia para deslogear a la usuaria cuando pulsa el botón de 'Cerrar sesión'
+    setUserId("");
+  };
+
   return (
     <div className="App">
-      <Header />
+      <Header isUserLogged={!!userId} logout={logout} />
       <Routes>
         <Route path="/" element={<Beginning />} />
         <Route

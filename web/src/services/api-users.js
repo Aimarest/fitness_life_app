@@ -11,6 +11,8 @@ const sendSignUpToApi = (data) => {
       return data;
     });
 };
+
+//Login
 const sendLoginToApi = (data) => {
   return fetch("http://localhost:4000/login", {
     method: "POST",
@@ -27,5 +29,3 @@ const objectToExport = {
   sendLoginToApi: sendLoginToApi,
 };
 export default objectToExport;
-
-//Login
