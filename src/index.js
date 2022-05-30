@@ -82,7 +82,17 @@ server.get("/trainingExercises", (req, res) => {
     allExercises: allExercises,
   });
 });
-
+// Endpoint para la petición del array de recetas:
+server.get("/kitchenRecipes", (req, res) => {
+  //Preparamos la query:
+  const getRecipes = db.prepare(`SELECT * FROM kitchen_recipes`);
+  //Ejecutamos la query:
+  const allRecipes = getRecipes.all();
+  res.json({
+    success: true,
+    allRecipes: allRecipes,
+  });
+});
 // static server of images
 const staticServerImagesPathWeb = "./src/public-training-images/";
 server.use(express.static(staticServerImagesPathWeb));

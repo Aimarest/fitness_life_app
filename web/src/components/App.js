@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 //Services:
 import getAllExercises from "../services/api-exercises";
 import apiUser from "../services/api-users";
-import apiKitchenRecipes from "../services/api-kitchen-recipes";
+import getKitchenRecipes from "../services/api-kitchen-recipes";
 import router from "../services/router";
 import ls from "../services/local-storage";
 //Components:
@@ -12,7 +12,7 @@ import Header from "./Header";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import Profile from "./Profile";
-import AllKitchenRecipes from "./AllKitchenRecipes";
+import KitchenRecipes from "./AllKitchenRecipes";
 import TrainigExercises from "./AllTrainingExercises";
 import MyKitchenRecipes from "./MyKitchenRecipes";
 import MyTrainingExercises from "./MyTrainingExercises";
@@ -25,6 +25,7 @@ const App = () => {
   const [signUpErrorMessage, setSignUpErrorMessage] = useState("");
   const [loginErrorMessage, setLoginErrorMessage] = useState("");
   const [AllTrainigExercises, setAllTrainingExercises] = useState([]);
+  const [AllKitchenRecipes, setAllKitchenRecipes] = useState([]);
   //useEffect para que cada vez que cambie el userId se guarde en el localStorage:
   useEffect(() => {
     setUserId(userId);
@@ -66,8 +67,13 @@ const App = () => {
     getAllExercises().then((data) => {
       setAllTrainingExercises(data.allExercises);
     });
-  }, [userId]);
-
+  }, []);
+  // Pedimos todas las recetas de cocina al API:
+  useEffect(() => {
+    getKitchenRecipes().then((data) => {
+      setAllKitchenRecipes(data.allRecipes);
+    });
+  }, []);
   /*
   Event: cerrar sesión.
   Redireccionamos al inicio de la página.
@@ -103,7 +109,10 @@ const App = () => {
             />
           }
         />
-        <Route path="/kitchenRecipes" element={<AllKitchenRecipes />} />
+        <Route
+          path="/kitchenRecipes"
+          element={<KitchenRecipes AllKitchenRecipes={AllKitchenRecipes} />}
+        />
         <Route
           path="/trainingExercises"
           element={
