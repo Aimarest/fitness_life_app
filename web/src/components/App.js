@@ -24,6 +24,9 @@ const App = () => {
   const [userId, setUserId] = useState(identification);
   const [signUpErrorMessage, setSignUpErrorMessage] = useState("");
   const [loginErrorMessage, setLoginErrorMessage] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
   const [AllTrainigExercises, setAllTrainingExercises] = useState([]);
   const [AllKitchenRecipes, setAllKitchenRecipes] = useState([]);
   const [favouritesExercises, setFavouritesExercises] = useState([]);
@@ -64,6 +67,17 @@ const App = () => {
       }
     });
   };
+
+  //Pedimos los datos del perfil del usuario:
+  useEffect(() => {
+    if (userId !== "") {
+      apiUser.getProfileFromApi(userId).then((response) => {
+        setUserName(response.name);
+        setUserEmail(response.email);
+        setUserPassword(response.password);
+      });
+    }
+  }, [userId]);
   //Pedimos todos los ejercicios de entrenamiento al API:
   useEffect(() => {
     getAllExercises().then((data) => {
@@ -90,6 +104,15 @@ const App = () => {
       setFavouritesRecipes(data.myFavouriteRecipes);
     });
   }, [userId]);
+  const sendDataProfile = (userId, data) => {
+    apiUser.sendProfileToApi(userId, data).then(() => {
+      apiUser.getProfileFromApi(userId).then((response) => {
+        setUserName(response.name);
+        setUserEmail(response.email);
+        setUserPassword(response.password);
+      });
+    });
+  };
   /*
   Event: cerrar sesión.
   Redireccionamos al inicio de la página.
@@ -145,7 +168,17 @@ const App = () => {
             <MyTrainingExercises favouritesExercises={favouritesExercises} />
           }
         />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={
+            <Profile
+              sendDataProfile={sendDataProfile}
+              userName={userName}
+              userEmail={userEmail}
+              userPassword={userPassword}
+            />
+          }
+        />
       </Routes>
       <Footer />
     </div>

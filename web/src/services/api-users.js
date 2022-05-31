@@ -24,6 +24,19 @@ const sendLoginToApi = (data) => {
       return data;
     });
 };
+//Profile:
+const getProfileFromApi = (userId) => {
+  return fetch("http://localhost:4000/profile", {
+    headers: {
+      "user-id": userId,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+};
+
 const setRecipeFavourite = (userId, recipeId) => {
   const data = {
     recipeId: recipeId.toString(),
@@ -84,6 +97,27 @@ const getUserRecipes = (userId) => {
       return data;
     });
 };
+const sendProfileToApi = (userId, data) => {
+  //Body params:
+  const bodyParams = {
+    name: data.name,
+    email: data.email,
+    password: data.password,
+  };
+  return fetch("http://localhost:4000/profile", {
+    method: "POST",
+    body: JSON.stringify(bodyParams),
+    headers: {
+      "Content-Type": "application/json",
+      "user-id": userId,
+    },
+  })
+    .then((response) => response.json())
+
+    .then((data) => {
+      return data;
+    });
+};
 const objectToExport = {
   sendSignUpToApi: sendSignUpToApi,
   sendLoginToApi: sendLoginToApi,
@@ -91,5 +125,7 @@ const objectToExport = {
   setExerciseFavourite: setExerciseFavourite,
   getUserExercises: getUserExercises,
   getUserRecipes: getUserRecipes,
+  sendProfileToApi: sendProfileToApi,
+  getProfileFromApi: getProfileFromApi,
 };
 export default objectToExport;

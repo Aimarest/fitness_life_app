@@ -34,7 +34,6 @@ const Login = (props) => {
     <section>
       <h1 className="title">Login</h1>
       <form className="formLogin" onSubmit={handleForm}>
-        {" "}
         <label className="formLogin__label" htmlFor="email">
           Write your email
         </label>

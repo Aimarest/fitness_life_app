@@ -71,6 +71,16 @@ server.post("/login", (req, res) => {
     });
   }
 });
+//Endpoint para pedir los datos del perfil del usuario:
+server.get("/profile", (req, res) => {
+  const userId = req.headers["user-id"];
+  //Preparamos la query:
+  const getProfile = db.prepare(`SELECT * FROM users WHERE id = ? `);
+  //Ejecutamos la query:
+  const userDataProfile = getProfile.get(userId);
+  res.json(userDataProfile);
+});
+
 // Endpoint para la petición del array de ejercicios:
 server.get("/trainingExercises", (req, res) => {
   //Preparamos la query:
