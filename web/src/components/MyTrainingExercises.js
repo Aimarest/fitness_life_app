@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import apiUser from "../services/api-users";
 const MyTrainingExercises = (props) => {
+  const userId = localStorage.getItem("userId");
+  const [favouritesExercises, setFavouritesExercises] = useState([]);
+  //Pedimos los ejercicios del usuario:
+  useEffect(() => {
+    apiUser.getUserExercises(userId).then((data) => {
+      setFavouritesExercises(data.myFavouriteExercises);
+    });
+  }, [userId]);
   const renderFavouritesExercises = () => {
     return <ul> {renderFavs()}</ul>;
   };
   const handleFavourite = (exerciseId) => {
     const userId = localStorage.getItem("userId");
     apiUser.setExerciseFavourite(userId, exerciseId).then((res) => {
-      console.log(res);
+      setFavouritesExercises((prev) =>
+        prev.filter((item) => {
+          return item.id !== exerciseId;
+        })
+      );
     });
   };
   const renderFavs = () => {
-    return props.favouritesExercises.map((exercise) => {
+    return favouritesExercises.map((exercise) => {
       return (
         <li key={exercise.id} className="card">
           <i
