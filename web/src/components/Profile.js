@@ -1,12 +1,10 @@
 import React from "react";
 import { useState } from "react";
 const Profile = (props) => {
-  const [name, setName] = useState(props.userName || "");
-  const [email, setEmail] = useState(props.userEmail || "");
-  const [password, setPassword] = useState(props.userPassword || "");
-  const [confirmPassword, setConfirmPassword] = useState(
-    props.userPassword || ""
-  );
+  const [name, setName] = useState(props.userName);
+  const [email, setEmail] = useState(props.userEmail);
+  const [password, setPassword] = useState(props.userPassword);
+  const [confirmPassword, setConfirmPassword] = useState(props.userPassword);
   const [passwordErrorMessage, setPasswordErrorMessage] = useState(false);
 
   const handleForm = (ev) => {

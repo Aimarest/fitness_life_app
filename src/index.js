@@ -81,6 +81,27 @@ server.get("/profile", (req, res) => {
   res.json(userDataProfile);
 });
 
+//Endpoint de actualizar el perfil del usuario:
+
+server.post("/profile", (req, res) => {
+  const userId = req.headers["user-id"];
+  //Preparamos la query:
+  const query = db.prepare(
+    `UPDATE users SET name = ?, email = ?, password = ? WHERE userId = ?`
+  );
+  //Ejecutamos la query:
+  const updateProfile = query.run(
+    req.body.name,
+    req.body.email,
+    req.body.password,
+    userId
+  );
+  res.json({
+    success: true,
+    userProfile: updateProfile,
+  });
+});
+
 // Endpoint para la petición del array de ejercicios:
 server.get("/trainingExercises", (req, res) => {
   //Preparamos la query:
