@@ -24,8 +24,72 @@ const sendLoginToApi = (data) => {
       return data;
     });
 };
+const setRecipeFavourite = (userId, recipeId) => {
+  const data = {
+    recipeId: recipeId.toString(),
+  };
+  return fetch("http://localhost:4000/myKitchenRecipes", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+      "user-id": userId,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      return data;
+    });
+};
+const setExerciseFavourite = (userId, exerciseId) => {
+  const data = {
+    exerciseId: exerciseId.toString(),
+  };
+  return fetch("http://localhost:4000/myTrainingExercises", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+      "user-id": userId,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      return data;
+    });
+};
+//Pedimos los ejercicios del usuario:
+const getUserExercises = (userId) => {
+  return fetch("http://localhost:4000/myTrainingExercises", {
+    headers: {
+      "user-id": userId,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+};
+//Pedimos las recetas del usuario:
+const getUserRecipes = (userId) => {
+  return fetch("http://localhost:4000/myKitchenRecipes", {
+    headers: {
+      "user-id": userId,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+};
 const objectToExport = {
   sendSignUpToApi: sendSignUpToApi,
   sendLoginToApi: sendLoginToApi,
+  setRecipeFavourite: setRecipeFavourite,
+  setExerciseFavourite: setExerciseFavourite,
+  getUserExercises: getUserExercises,
+  getUserRecipes: getUserRecipes,
 };
 export default objectToExport;

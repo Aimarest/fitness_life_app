@@ -26,6 +26,8 @@ const App = () => {
   const [loginErrorMessage, setLoginErrorMessage] = useState("");
   const [AllTrainigExercises, setAllTrainingExercises] = useState([]);
   const [AllKitchenRecipes, setAllKitchenRecipes] = useState([]);
+  const [favouritesExercises, setFavouritesExercises] = useState([]);
+  const [favouritesRecipes, setFavouritesRecipes] = useState([]);
   //useEffect para que cada vez que cambie el userId se guarde en el localStorage:
   useEffect(() => {
     setUserId(userId);
@@ -74,6 +76,20 @@ const App = () => {
       setAllKitchenRecipes(data.allRecipes);
     });
   }, []);
+
+  //Pedimos los ejercicios del usuario:
+  useEffect(() => {
+    apiUser.getUserExercises(userId).then((data) => {
+      setFavouritesExercises(data.myFavouriteExercises);
+    });
+  }, [userId]);
+
+  //Pedimos las recetas del usuario:
+  useEffect(() => {
+    apiUser.getUserRecipes(userId).then((data) => {
+      setFavouritesRecipes(data.myFavouriteRecipes);
+    });
+  }, [userId]);
   /*
   Event: cerrar sesión.
   Redireccionamos al inicio de la página.
@@ -119,8 +135,16 @@ const App = () => {
             <TrainigExercises AllTrainigExercises={AllTrainigExercises} />
           }
         />
-        <Route path="/myKitchenRecipes" element={<MyKitchenRecipes />} />
-        <Route path="/myTrainingExercises" element={<MyTrainingExercises />} />
+        <Route
+          path="/myKitchenRecipes"
+          element={<MyKitchenRecipes favouritesRecipes={favouritesRecipes} />}
+        />
+        <Route
+          path="/myTrainingExercises"
+          element={
+            <MyTrainingExercises favouritesExercises={favouritesExercises} />
+          }
+        />
         <Route path="/profile" element={<Profile />} />
       </Routes>
       <Footer />

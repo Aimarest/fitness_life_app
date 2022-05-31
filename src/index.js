@@ -93,6 +93,127 @@ server.get("/kitchenRecipes", (req, res) => {
     allRecipes: allRecipes,
   });
 });
+
+//Endpoint para la petición del array de ejercicios favoritos:
+
+server.get("/myTrainingExercises", (req, res) => {
+  //Header params:
+  const userId = req.headers["user-id"];
+  //Preparamos la query:
+  const getMyExercisesId = db.prepare(
+    `SELECT exerciseId FROM favourites_exercises WHERE userId = ? `
+  );
+  //Ejecutamos la query:
+  const myFavouriteExercises = getMyExercisesId.all(userId);
+
+  const exercisesIdsQuestions = myFavouriteExercises.map((id) => "?").join(",");
+  //Preparamos la segunda query para obtener los datos de los ejercicios:
+
+  const exercisesQuery = db.prepare(
+    `SELECT * FROM training WHERE id IN (${exercisesIdsQuestions})`
+  );
+  //Convertimos el array de objetos de id de ejercicios anterior en un array de números:
+  const exercisesIdsNumbers = myFavouriteExercises.map(
+    (exercise) => exercise.exerciseId
+  );
+  //Ejecutamos la segunda query:
+  const exercises = exercisesQuery.all(exercisesIdsNumbers);
+  res.json({
+    succes: true,
+    myFavouriteExercises: exercises,
+  });
+});
+//Endpoint para la petición del array de recetas favoritas:
+
+server.get("/myKitchenRecipes", (req, res) => {
+  //Header params:
+  const userId = req.headers["user-id"];
+  //Preparamos la query:
+  const getMyRecipes = db.prepare(
+    `SELECT recipeId FROM favourites_recipes WHERE userId = ? `
+  );
+  //Ejecutamos la query:
+  const myFavouriteRecipes = getMyRecipes.all(userId);
+  //Recorremos el array que nos devuelve para saber cuántos registros hay:
+  const recipesIdsQuestions = myFavouriteRecipes.map((id) => "?").join(",");
+  //Preparamos la segunda query para obtener todos los datos de las recetas:
+
+  const recipesQuery = db.prepare(
+    `SELECT * FROM kitchen_recipes WHERE id IN (${recipesIdsQuestions})`
+  );
+
+  //Convertimos el array de objetos de id anterior en un array de números:
+  const recipesIdsNumbers = myFavouriteRecipes.map((recipe) => recipe.recipeId);
+  //Ejecutamos la segunda query:
+  const recipes = recipesQuery.all(recipesIdsNumbers);
+
+  res.json({
+    succes: true,
+    myFavouriteRecipes: recipes,
+  });
+});
+
+//Favoritos:
+
+//Endpoint en el que se busca si hay algún registro de la tabla con ese exerciseId y ese userId. Si no hay ninguno, se añade, y si hay alguno se borra.
+
+server.post("/myTrainingExercises", (req, res) => {
+  const userId = req.headers["user-id"];
+  const exerciseId = req.body.exerciseId;
+  const userFavourites = db.prepare(
+    `SELECT * FROM favourites_exercises WHERE userId = ? AND exerciseId = ?`
+  );
+  const userDataFavourites = userFavourites.get(userId, exerciseId);
+  console.log(userDataFavourites);
+  if (userDataFavourites === undefined) {
+    const addExerciseFav = db.prepare(
+      "INSERT INTO favourites_exercises (userId, exerciseId) VALUES (?, ?)"
+    );
+    const userFav = addExerciseFav.run(userId, exerciseId);
+
+    res.json({
+      userFav: userFav,
+    });
+  } else {
+    const deleteFav = db.prepare(
+      "DELETE FROM favourites_exercises WHERE userId = ? and exerciseId = ?"
+    );
+    const notFav = deleteFav.run(userId, exerciseId);
+    res.json({
+      notFav: notFav,
+    });
+  }
+});
+
+//Endpoint en el que se busca si hay algún registro de la tabla con ese recipeId y ese userId. Si no hay ninguno, se añade, y si hay alguno se borra.
+
+server.post("/myKitchenRecipes", (req, res) => {
+  const userId = req.headers["user-id"];
+  const recipeId = req.body.recipeId;
+  const userFavourites = db.prepare(
+    `SELECT * FROM favourites_recipes WHERE userId = ? AND recipeId = ?`
+  );
+  const userDataFavourites = userFavourites.get(userId, recipeId);
+  console.log(userDataFavourites);
+  if (userDataFavourites === undefined) {
+    const addRecipeFav = db.prepare(
+      "INSERT INTO favourites_recipes (userId, recipeId) VALUES (?, ?)"
+    );
+    const userFav = addRecipeFav.run(userId, recipeId);
+
+    res.json({
+      userFav: userFav,
+    });
+  } else {
+    const deleteFav = db.prepare(
+      "DELETE FROM favourites_recipes WHERE userId = ? and recipeId = ?"
+    );
+    const notFav = deleteFav.run(userId, recipeId);
+    res.json({
+      notFav: notFav,
+    });
+  }
+});
 // static server of images
 const staticServerImagesPathWeb = "./src/public-training-images/";
 server.use(express.static(staticServerImagesPathWeb));
