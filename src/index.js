@@ -87,7 +87,7 @@ server.post("/profile", (req, res) => {
   const userId = req.headers["user-id"];
   //Preparamos la query:
   const query = db.prepare(
-    `UPDATE users SET name = ?, email = ?, password = ? WHERE userId = ?`
+    `UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?`
   );
   //Ejecutamos la query:
   const updateProfile = query.run(

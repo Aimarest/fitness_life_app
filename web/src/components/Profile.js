@@ -10,8 +10,6 @@ const Profile = (props) => {
   const handleForm = (ev) => {
     ev.preventDefault();
     setPasswordErrorMessage(false);
-  };
-  const handleChangeProfile = () => {
     const userId = localStorage.getItem("userId");
 
     if (password === confirmPassword) {
@@ -27,11 +25,11 @@ const Profile = (props) => {
   };
   const passwordErrorRender = () => {
     // Si el API ha devuelto un error, APP lo guarda en el estado y nos lo pasa
-    if (passwordErrorMessage !== false) {
+    if (passwordErrorMessage === true) {
       return (
         <p className="errorMessage">
           Error in password:
-          <span className="error">passwords are not the same</span>
+          <span className="error"> passwords are not the same</span>
         </p>
       );
     }
@@ -97,12 +95,7 @@ const Profile = (props) => {
           value={confirmPassword}
           onChange={handleConfirmPassword}
         />
-        <input
-          className="button"
-          type="submit"
-          value="Change profile "
-          onClick={handleChangeProfile}
-        />
+        <input className="button" type="submit" value="Change profile " />
         {passwordErrorRender()}
       </form>
     </section>
