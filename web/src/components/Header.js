@@ -7,13 +7,19 @@ const Header = (props) => {
       return (
         <>
           <li>
-            <Link to="/login">Login</Link>
+            <Link className="header__link" to="/login">
+              Login
+            </Link>
           </li>
           <li>
-            <Link to="/signup">Sign Up</Link>
+            <Link className="header__link" to="/signup">
+              Sign Up
+            </Link>
           </li>
           <li>
-            <Link to="/">Begining</Link>
+            <Link className="header__link" to="/">
+              Begining
+            </Link>
           </li>
         </>
       );
@@ -23,30 +29,42 @@ const Header = (props) => {
       return (
         <>
           <li>
-            <Link to="/profile">My profile</Link>
+            <Link className="header__link" to="/profile">
+              My profile
+            </Link>
           </li>
           <li>
-            <Link to="/myKitchenRecipes">My kitchen recipes</Link>
+            <Link className="header__link" to="/myKitchenRecipes">
+              My kitchen recipes
+            </Link>
           </li>
           <li>
-            <Link to="/myTrainingExercises">My training exercises</Link>
+            <Link className="header__link" to="/myTrainingExercises">
+              My training exercises
+            </Link>
           </li>
           <li>
-            <Link to="/trainingExercises">All training exercises</Link>
+            <Link className="header__link" to="/trainingExercises">
+              All training exercises
+            </Link>
           </li>
           <li>
-            <Link to="/kitchenRecipes">All kitchen recipes</Link>
+            <Link className="header__link" to="/kitchenRecipes">
+              All kitchen recipes
+            </Link>
           </li>
           <li className="close">
-            <span onClick={props.logout}>Cerrar sesión</span>
+            <span className="header__link" onClick={props.logout}>
+              Cerrar sesión
+            </span>
           </li>
         </>
       );
   };
   return (
     <header className="header">
-      <nav>
-        <ul>
+      <nav className="header__nav">
+        <ul className="header__list">
           {renderUnloggedUserLinks()}
           {renderLoggedUserLinks()}
         </ul>

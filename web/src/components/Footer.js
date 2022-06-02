@@ -7,12 +7,11 @@ const Footer = () => {
           <i className="fa-regular fa-copyright"></i>2022 Ana Isabel Marcos
           Estévez
         </p>
-
+        <p className="Footer__text">
+          If you are interested in contacting me, click on the icon of my social
+          networks:
+        </p>
         <nav className="Footer__nav">
-          <p className="Footer__text">
-            If you are interested in contacting me, click on the icon of my
-            social networks:
-          </p>
           <ul className="Footer__list">
             <li className="Footer__link">
               <a

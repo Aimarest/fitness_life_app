@@ -17,7 +17,8 @@ import TrainigExercises from "./AllTrainingExercises";
 import MyKitchenRecipes from "./MyKitchenRecipes";
 import MyTrainingExercises from "./MyTrainingExercises";
 import Footer from "./Footer";
-
+//Styles:
+import "../stylesheets/App.scss";
 const App = () => {
   // state: user
   const identification = ls.get("userId", "");
