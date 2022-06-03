@@ -57,26 +57,25 @@ const SignUp = (props) => {
     setConfirmPassword(ev.target.value);
   };
   return (
-    <section>
-      {" "}
-      <h1 className="title">Sign up</h1>
-      <form className="formSignUp" onSubmit={handleForm}>
-        <label className="formSignUp__label" htmlFor="name">
+    <section className="SignUp">
+      <h1 className="SignUp__title">Sign up</h1>
+      <form className="SignUp__form" onSubmit={handleForm}>
+        <label className="SignUp__label" htmlFor="name">
           Write your name
         </label>
         <input
-          className="formSignUp__input"
+          className="SignUp__input"
           type="text"
           name="name"
           id="name"
           value={name}
           onChange={handleName}
         />
-        <label className="formSignUp__label" htmlFor="email">
+        <label className="SignUp__label" htmlFor="email">
           Write your email
         </label>
         <input
-          className="formSignUp__input"
+          className="SignUp__input"
           type="text"
           name="email"
           id="email"
@@ -84,11 +83,11 @@ const SignUp = (props) => {
           onChange={handleEmail}
         />
 
-        <label className="formSignUp__label" htmlFor="password">
+        <label className="SignUp__label" htmlFor="password">
           Write your password
         </label>
         <input
-          className="formSignUp__input"
+          className="SignUp__input"
           type="text"
           name="password"
           id="password"
@@ -96,11 +95,11 @@ const SignUp = (props) => {
           onChange={handlePassword}
         />
 
-        <label className="formSignUp__label" htmlFor="confirmPassword">
+        <label className="SignUp__label" htmlFor="confirmPassword">
           Write your password again
         </label>
         <input
-          className="formSignUp__input"
+          className="SignUp__input"
           type="text"
           name="confirmPassword"
           id="confirmPassword"

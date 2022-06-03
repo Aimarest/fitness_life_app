@@ -17,13 +17,18 @@ box-shadow: 0 0 0.5px rgb(108, 7, 27), 0 0 1px rgb(179, 20, 81),
 }
 @media all and (min-width:1400px){
         font-size:2.5rem;
-        width: 10rem;
+        width: 15rem;
         padding:1rem;
 }
 @media all and (min-width:2000px){
         font-size:4rem;
-        width: 15rem;
+        width: 20rem;
         
+}
+
+
+&:hover{
+        background-color: rgb(127, 38, 66);
 }
 
 }
