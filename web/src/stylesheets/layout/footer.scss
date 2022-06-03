@@ -1,5 +1,4 @@
 .Footer{
-    height:25vh;
     display:flex;
     flex-direction: column;
     justify-content:center;
@@ -10,12 +9,20 @@
     text-align: center;  
     @media all and (min-width:764px){
         align-items:flex-start;
-        height:30vh;
+        
         }
     &__text{
     @media all and (min-width:764px){
-    font-size:1.3rem;
+    font-size:1.6rem;
     text-align: start;
+    margin-top:2rem;
+    
+    @media all and (min-width:1400px){
+        font-size:2rem;
+      }
+      @media all and (min-width:2000px){
+        font-size:4rem;
+      }
     }
     }
     &__nav{
@@ -33,19 +40,19 @@
             color:white;
             font-size: 1.5rem;
             &:hover{
-            transition: 0.3s ease-in-out;
-            font-size: 32px;
-            color:black;
+            transition: 0.5s ease-in-out;
+            font-size: 2rem;
+            color:rgb(220, 132, 132);
             @media all and (min-width:768px){
                 font-size: 44px;
             }
             }
             @media all and (min-width:768px){
-                font-size: 40px;
+                font-size: 2.5rem;
                 margin:20px 70px;
             }
             @media all and (min-width:2000px){
-                font-size: 60px;
+                font-size:5rem;
                 margin:30px 100px;
                 }
         }

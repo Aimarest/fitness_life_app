@@ -31,25 +31,25 @@ const Login = (props) => {
   };
 
   return (
-    <section>
-      <h1 className="title">Login</h1>
-      <form className="formLogin" onSubmit={handleForm}>
-        <label className="formLogin__label" htmlFor="email">
+    <section className="login">
+      <h1 className="login__title">Login</h1>
+      <form className="login__form" onSubmit={handleForm}>
+        <label className="login__label" htmlFor="email">
           Write your email
         </label>
         <input
-          className="formLogin__input"
+          className="login__input"
           type="text"
           name="email"
           id="email"
           value={email}
           onChange={handleEmail}
         />
-        <label className="formLogin__label" htmlFor="password">
+        <label className="login__label" htmlFor="password">
           Write your password
         </label>
         <input
-          className="formLogin__input"
+          className="login__input"
           type="text"
           name="password"
           id="password"

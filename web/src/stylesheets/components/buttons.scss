@@ -1,0 +1,29 @@
+.button{
+margin-top: 2rem;;
+border-radius: 10%;
+border:solid 0.3rem rgb(114, 11, 11) ;
+background-color:rgb(220, 132, 132);
+color:white;
+width: 6rem;
+font-size: 1rem;
+padding:0.5rem;
+box-shadow: 0 0 0.5px rgb(108, 7, 27), 0 0 1px rgb(179, 20, 81),
+0 0 2px rgb(228, 17, 55), 0 0 4px rgb(127, 38, 66),
+0 0 15px rgb(131, 30, 53), 0 0 25px rgb(127, 38, 62),
+0 0 50px rgb(127, 38, 54);
+@media and and(min-width:700){
+        font-size:2rem;
+        width: 7rem;
+}
+@media all and (min-width:1400px){
+        font-size:2.5rem;
+        width: 10rem;
+        padding:1rem;
+}
+@media all and (min-width:2000px){
+        font-size:4rem;
+        width: 15rem;
+        
+}
+
+}
