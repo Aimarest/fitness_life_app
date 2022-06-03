@@ -4,6 +4,7 @@
     display:flex;
     flex-direction: column;
     justify-content: center;
+   
  align-items:center; 
  text-align: center;
 &__title{
@@ -14,6 +15,9 @@
       0 0 4px rgb(228, 17, 55), 0 0 4px rgb(127, 38, 66),
       0 0 15px rgb(131, 30, 53), 0 0 20px rgb(127, 38, 62),
       0 0 30px rgb(127, 38, 54);    
+      @media all and (min-width:1000px){
+        font-size:4rem;
+    }
        @media all and (min-width:1400px){
         font-size: 5rem;
         margin-bottom:8rem;
@@ -26,11 +30,15 @@
 &__form{
     display:flex;
     flex-direction: column;
+    align-items: center;
 } 
 &__label{
     font-size:1.8rem;
     color:white;
     margin-bottom:1rem;
+    @media all and (min-width:1000px){
+        font-size:2.6rem;
+    }
     @media all and (min-width:1400px){
         font-size: 3rem;
         margin-bottom:2rem;
@@ -41,6 +49,7 @@
 }
 }
 &__input{
+    font-size: 1rem;
     padding:0.2rem;
     margin-bottom:1rem;
     border-radius: 5%;
@@ -51,9 +60,15 @@
       @media all and (min-width:400px){
         width: 20rem;
     }
+    @media all and (min-width:1000px){
+        width: 25rem;
+        padding:0.3rem;
+        font-size:1.5rem;
+    }
     @media all and (min-width:1400px){
         width: 30rem;
         padding:0.5rem;
+        font-size:2rem;
     }
     @media all and (min-width:2000px){
         width: 40rem;

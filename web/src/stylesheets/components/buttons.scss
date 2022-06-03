@@ -11,10 +11,15 @@ box-shadow: 0 0 0.5px rgb(108, 7, 27), 0 0 1px rgb(179, 20, 81),
 0 0 2px rgb(228, 17, 55), 0 0 4px rgb(127, 38, 66),
 0 0 15px rgb(131, 30, 53), 0 0 25px rgb(127, 38, 62),
 0 0 50px rgb(127, 38, 54);
+
 @media and and(min-width:700){
-        font-size:2rem;
+        font-size:1.8rem;
         width: 7rem;
 }
+@media all and (min-width:1000px){
+        font-size:2rem;
+        width:8rem;
+    }
 @media all and (min-width:1400px){
         font-size:2.5rem;
         width: 15rem;

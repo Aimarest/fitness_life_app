@@ -48,54 +48,54 @@ const Profile = (props) => {
     setConfirmPassword(ev.target.value);
   };
   return (
-    <section>
-      <h1>Your profile:</h1>
-      <form onSubmit={handleForm}>
-        <label className="formChange__label" htmlFor="name">
+    <section className="profile">
+      <h1 className="profile__title">Your profile:</h1>
+      <form className="profile__form" onSubmit={handleForm}>
+        <label className="profile__label" htmlFor="name">
           Write your new name
         </label>
         <input
-          className="formChange__input"
+          className="profile__input"
           type="text"
           name="name"
           id="name"
           value={name}
           onChange={handleName}
         />
-        <label className="formChange__label" htmlFor="email">
+        <label className="profile__label" htmlFor="email">
           Write your new email
         </label>
         <input
-          className="formChange__input"
+          className="profile__input"
           type="text"
           name="email"
           id="email"
           value={email}
           onChange={handleEmail}
         />
-        <label className="formChange__label" htmlFor="password">
+        <label className="profile__label" htmlFor="password">
           Write your new password
         </label>
         <input
-          className="formChange__input"
+          className="profile__input"
           type="text"
           name="password"
           id="password"
           value={password}
           onChange={handlePassword}
         />
-        <label className="formChange__label" htmlFor="confirmPassword">
+        <label className="profile__label" htmlFor="confirmPassword">
           Write your password again
         </label>
         <input
-          className="formChange__input"
+          className="profile__input"
           type="text"
           name="confirmPassword"
           id="confirmPassword"
           value={confirmPassword}
           onChange={handleConfirmPassword}
         />
-        <input className="button" type="submit" value="Change profile " />
+        <input className="button" type="submit" value="Save " />
         {passwordErrorRender()}
       </form>
     </section>

@@ -1,0 +1,9 @@
+.errorMessage{
+    font-size:2rem;
+    margin-top:2rem;
+    color:rgb(114, 11, 11);
+    @media all and (min-width:1000px){
+        font-size:2.5rem;
+        margin-top:4rem;
+    }
+}

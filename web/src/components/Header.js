@@ -27,38 +27,42 @@ const Header = (props) => {
   const renderLoggedUserLinks = () => {
     if (props.isUserLogged === true)
       return (
-        <>
-          <li>
-            <Link className="header__link" to="/profile">
-              My profile
-            </Link>
-          </li>
-          <li>
-            <Link className="header__link" to="/myKitchenRecipes">
-              My kitchen recipes
-            </Link>
-          </li>
-          <li>
-            <Link className="header__link" to="/myTrainingExercises">
-              My training exercises
-            </Link>
-          </li>
-          <li>
-            <Link className="header__link" to="/trainingExercises">
-              All training exercises
-            </Link>
-          </li>
-          <li>
-            <Link className="header__link" to="/kitchenRecipes">
-              All kitchen recipes
-            </Link>
-          </li>
-          <li className="close">
-            <span className="header__link" onClick={props.logout}>
-              Cerrar sesión
-            </span>
-          </li>
-        </>
+        <div className="profile__header">
+          <div>
+            <li>
+              <Link className="profile__link" to="/profile">
+                My profile
+              </Link>
+            </li>
+            <li>
+              <Link className="profile__link" to="/myKitchenRecipes">
+                My kitchen recipes
+              </Link>
+            </li>
+            <li>
+              <Link className="profile__link" to="/myTrainingExercises">
+                My training exercises
+              </Link>
+            </li>
+          </div>
+          <div>
+            <li>
+              <Link className="profile__link" to="/trainingExercises">
+                All training exercises
+              </Link>
+            </li>
+            <li>
+              <Link className="profile__link" to="/kitchenRecipes">
+                All kitchen recipes
+              </Link>
+            </li>
+            <li className="close">
+              <span className="profile__link" onClick={props.logout}>
+                Cerrar sesión
+              </span>
+            </li>
+          </div>
+        </div>
       );
   };
   return (
