@@ -4,6 +4,10 @@
     justify-content: center;
     align-items: center;
     background-color: rgb(114, 11, 11);
+    @media all and (min-width:764px){
+        height:30vh;
+        justify-content: flex-end;
+        }
     &__list {
         display:flex;
     }
@@ -13,5 +17,8 @@
         font-size: 1.2rem;
         text-shadow: 0 0 2em .25em rgb(18, 16, 16)
         inset 0 0 3em .25em rgb(39, 34, 34);
+        @media all and (min-width:764px){
+            font-size:1.8rem;
+          }
     }
 }

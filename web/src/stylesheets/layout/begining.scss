@@ -4,18 +4,30 @@
     justify-content: center;
     align-items: center;
     padding:2rem;
+    @media all and (min-width:764px){
+       align-items: flex-start;
+       padding:4rem;
+    }
     &__title{
         color: rgb(114, 11, 11);
         font-size: 2.4rem;
+        @media all and (min-width:764px){
+           font-size:4rem;
+         }
     }
     &__subtitle{
         color:white;
         font-size: 2rem;
         margin:2rem 0 2rem 0;
+        @media all and (min-width:764px){
+            font-size:3rem;
+          }
     }
     &__text{
         color:rgb(114, 11, 11);
         font-size: 2rem;
-        
+        @media all and (min-width:764px){
+            font-size:2.5rem;
+          }
     }
 }
