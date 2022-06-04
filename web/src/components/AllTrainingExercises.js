@@ -14,28 +14,32 @@ const AllTrainigExercises = (props) => {
   const renderAllExercises = () => {
     return props.AllTrainigExercises.map((exercise) => {
       return (
-        <li key={exercise.id} className="card">
-          <i
-            className="fa-solid fa-heart card__fav"
-            onClick={() => handleFavourite(exercise.id)}
-          ></i>
+        <li key={exercise.id} className="training__card">
           <img
-            className="card__img"
+            className="training__img"
             src={exercise.image}
             alt={`${exercise.name}`}
           />
-          <h3 className="card__title uppercase">{exercise.name}</h3>
-          <p className="card__description">
+          <h3 className="training__subtitle">{exercise.name}</h3>
+          <i
+            className="fa-solid fa-heart training__fav"
+            onClick={() => handleFavourite(exercise.id)}
+          >
+            <span className="training__makeFav">Make Fav</span>
+          </i>
+          <p className="training__description">
             How to do it: {exercise.description}
           </p>
-          <p>Difficulty: {exercise.difficulty}</p>
+          <p className="training__difficulty">
+            Difficulty: {exercise.difficulty}
+          </p>
         </li>
       );
     });
   };
   return (
-    <section>
-      <h1>These are all training exercises:</h1>
+    <section className="training">
+      <h1 className="training__title">These are all training exercises:</h1>
       {renderExercisesList()}
     </section>
   );

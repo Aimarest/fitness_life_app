@@ -10,7 +10,7 @@ const MyTrainingExercises = (props) => {
     });
   }, [userId]);
   const renderFavouritesExercises = () => {
-    return <ul> {renderFavs()}</ul>;
+    return <ul className="training__list"> {renderFavs()}</ul>;
   };
   const handleFavourite = (exerciseId) => {
     const userId = localStorage.getItem("userId");
@@ -25,28 +25,30 @@ const MyTrainingExercises = (props) => {
   const renderFavs = () => {
     return favouritesExercises.map((exercise) => {
       return (
-        <li key={exercise.id} className="card">
-          <i
-            className="fa-solid fa-heart card__fav"
-            onClick={() => handleFavourite(exercise.id)}
-          ></i>
+        <li key={exercise.id} className="training__card">
           <img
-            className="card__img"
+            className="training__img"
             src={exercise.image}
             alt={`${exercise.name}`}
           />
-          <h3 className="card__title uppercase">{exercise.name}</h3>
-          <p className="card__description">
+          <h3 className="training__subtitle">{exercise.name}</h3>
+          <i
+            className="fa-solid fa-heart training__fav"
+            onClick={() => handleFavourite(exercise.id)}
+          ></i>
+          <p className="training__description">
             How to do it: {exercise.description}
           </p>
-          <p>Difficulty: {exercise.difficulty}</p>
+          <p className="training__difficulty">
+            Difficulty: {exercise.difficulty}
+          </p>
         </li>
       );
     });
   };
   return (
-    <section>
-      <h1>These are your favorite exercises</h1>
+    <section className="training">
+      <h1 className="training__title">These are your favorite exercises</h1>
       {renderFavouritesExercises()}
     </section>
   );
