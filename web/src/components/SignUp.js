@@ -9,6 +9,7 @@ const SignUp = (props) => {
   const handleForm = (ev) => {
     ev.preventDefault();
     setPasswordErrorMessage(false);
+    setSignUpErrorMessage("");
 
     if (password === confirmPassword) {
       // Enviamos los datos a App y este al API
