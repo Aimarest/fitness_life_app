@@ -1,0 +1,140 @@
+.recipeCard{
+    padding:1rem;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__title{
+        padding:2rem;
+        text-align: center;
+        font-size:2rem;
+        color:rgb(114, 11, 11);
+        text-shadow: 0 0 2px rgb(108, 7, 27), 0 0 5px rgb(179, 20, 81),
+          0 0 4px rgb(228, 17, 55), 0 0 4px rgb(127, 38, 66),
+          0 0 15px rgb(131, 30, 53), 0 0 20px rgb(127, 38, 62),
+          0 0 30px rgb(127, 38, 54); 
+          @media all and (min-width:768px){
+            font-size: 3rem;
+            padding-top:3rem;
+        }   
+        @media all and (min-width:1000px){
+            font-size: 4rem;
+            margin-bottom:2rem;
+        }
+           @media all and (min-width:1400px){
+            font-size: 4rem;
+            margin-bottom:2rem;
+        }};
+    &__subtitle{
+        color:rgb(114, 11, 11);
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        text-shadow: 0 0 2px rgb(140, 125, 128), 0 0 5px rgb(242, 235, 238),
+        0 0 4px rgb(236, 169, 182), 0 0 4px rgb(127, 38, 66),
+        0 0 20px rgb(113, 76, 84), 0 0 25px rgb(173, 64, 93),
+        0 0 30px rgb(218, 102, 123); 
+        @media all and (min-width:425px){
+            font-size: 1.4rem;
+            
+        } 
+        @media all and (min-width:768px){
+            font-size: 1.8rem;
+            
+        }   
+        @media all and (min-width:1000px){
+            font-size: 2.2rem;
+           
+        }
+    
+    
+    }
+    &__description{
+        text-align: center;
+        color:white;
+        line-height:1.8rem ;
+        font-size: 1rem;
+        max-width:30rem;
+        @media all and (min-width:400px){
+            font-size: 1.2rem;
+            }
+            @media all and (min-width:768px){
+                font-size: 1.4rem;
+                line-height:2.2rem ;
+                max-width:50rem;
+            }   
+            @media all and (min-width:1000px){
+            
+                max-width:70rem;
+               
+            }
+               @media all and (min-width:1400px){
+               
+                max-width:90rem;
+                
+            }
+            @media all and (min-width:2000px){
+                max-width:200rem;
+                font-size: 1.8rem;
+            }
+          
+    }
+    &__fav{
+        margin:1rem;
+        font-size: 1rem;
+        color:rgb(228, 17, 55);
+        text-shadow: 0 0 1px rgb(108, 7, 27), 0 0 3px rgb(179, 20, 81),
+        0 0 2px rgb(228, 17, 55), 0 0 2px rgb(127, 38, 66),
+        0 0 10px rgb(131, 30, 53), 0 0 15px rgb(127, 38, 62),
+        0 0 20px rgb(127, 38, 54); 
+        @media all and (min-width:768px){
+            font-size: 1rem;
+            
+        }   
+        @media all and (min-width:1000px){
+            font-size: 1.5rem;
+           
+        }
+     
+    }
+    &__makeFav{
+        margin-left:1rem;
+        font-size: 0.8rem;
+        @media all and (min-width:768px){
+            font-size: 1rem;
+            
+        }   
+        @media all and (min-width:1000px){
+            font-size: 1.5rem;
+           
+        }
+       
+    }
+    &__difficulty{
+        font-size:1.2rem;
+        color:rgb(114, 11, 11);
+        @media all and (min-width:400px){
+            font-size: 1.2rem;
+            }
+            @media all and (min-width:768px){
+                font-size: 1.4rem;
+                
+            }   
+            @media all and (min-width:1000px){
+                font-size: 1.8rem;
+               
+            }
+               @media all and (min-width:1400px){
+                font-size:2rem;
+                ;
+            }
+         
+    }
+
+  &__container{ 
+      display:flex; 
+    flex-direction: column;
+justify-content: center;
+padding:1rem;
+text-align: center;}
+}

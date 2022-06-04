@@ -10,7 +10,7 @@ const MyTrainingExercises = (props) => {
     });
   }, [userId]);
   const renderFavouritesExercises = () => {
-    return <ul className="training__list"> {renderFavs()}</ul>;
+    return <ul className="cards"> {renderFavs()}</ul>;
   };
   const handleFavourite = (exerciseId) => {
     const userId = localStorage.getItem("userId");

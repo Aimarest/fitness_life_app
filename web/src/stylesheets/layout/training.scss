@@ -13,9 +13,9 @@
         }
 }
 .training{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
+display:flex;
+flex-direction: column;
+justify-content: center;
  align-items:center; 
  text-align: center;
  padding:3rem;
@@ -182,6 +182,10 @@ border:solid 0.2rem rgb(228, 17, 55);
         }
            @media all and (min-width:1400px){
             font-size:2rem;
+            ;
+        }
+        @media all and (min-width:2000px){
+            font-size:2.5rem;
             ;
         }
 }
