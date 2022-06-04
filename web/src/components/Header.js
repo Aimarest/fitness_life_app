@@ -58,7 +58,7 @@ const Header = (props) => {
             </li>
             <li className="close">
               <span className="profile__link" onClick={props.logout}>
-                Cerrar sesión
+                Log out
               </span>
             </li>
           </div>
