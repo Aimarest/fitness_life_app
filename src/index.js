@@ -24,12 +24,10 @@ server.post("/signup", (req, res) => {
   const emailSignUp = req.body.email;
   const passwordSignUp = req.body.password;
   //Preparamos la query:
-  const userSignUp = db.prepare(
-    `SELECT * FROM users WHERE name = ? AND email = ? AND password = ?`
-  );
+  const userSignUp = db.prepare(`SELECT * FROM users WHERE email = ?`);
   //Ejecutamos la query:
-  const foundUser = userSignUp.get(nameSignUp, emailSignUp, passwordSignUp);
-
+  const foundUser = userSignUp.get(emailSignUp);
+  console.log(foundUser);
   if (foundUser === undefined) {
     const insertUser = db.prepare(
       "INSERT INTO users (name,email,password) VALUES (?,?,?)"

@@ -27,6 +27,8 @@
 &__form{
     display:flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 } 
 &__label{
     font-size:1.8rem;

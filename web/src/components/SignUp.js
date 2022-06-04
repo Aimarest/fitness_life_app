@@ -5,7 +5,7 @@ const SignUp = (props) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordErrorMessage, setPasswordErrorMessage] = useState(false);
-
+  const [signUpErrorMessage, setSignUpErrorMessage] = useState(" ");
   const handleForm = (ev) => {
     ev.preventDefault();
     setPasswordErrorMessage(false);
@@ -38,8 +38,8 @@ const SignUp = (props) => {
     if (props.signUpErrorMessage !== "") {
       return (
         <p className="errorMessage">
-          Sign up error
-          <span className="error">{props.signUpErrorMessage}</span>
+          Sign up error:
+          <span className="error"> {props.signUpErrorMessage} </span>
         </p>
       );
     }
