@@ -4,9 +4,13 @@
     grid-template-rows: repeat(10, 1fr);
     grid-gap: 2rem;
     @media all and (min-width:768px){
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     }
+    @media all and (min-width:1300px){
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        }
 }
 .training{
     display:flex;
@@ -21,6 +25,20 @@
 &__card{
     border:solid 0.2rem rgb(63, 28, 35);
     padding:0.5rem;
+    border-radius: 10px;
+  
+        @media all and (min-width:768px){
+            padding:1rem;
+            
+        }   
+        @media all and (min-width:1000px){
+            padding: 1.8rem;
+           
+        }
+           @media all and (min-width:1400px){
+            paddinge:2rem;
+            ;
+        }
 }
 &__title{
     padding:1rem;
@@ -48,24 +66,69 @@
 &__subtitle{
     color:rgb(114, 11, 11);
     text-transform: uppercase;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     text-shadow: 0 0 2px rgb(140, 125, 128), 0 0 5px rgb(242, 235, 238),
     0 0 4px rgb(236, 169, 182), 0 0 4px rgb(127, 38, 66),
     0 0 20px rgb(113, 76, 84), 0 0 25px rgb(173, 64, 93),
     0 0 30px rgb(218, 102, 123); 
+    @media all and (min-width:768px){
+        font-size: 1.8rem;
+        
+    }   
+    @media all and (min-width:1000px){
+        font-size: 2.2rem;
+       
+    }
+       @media all and (min-width:1400px){
+        font-size:3rem;
+        ;
+    }
+    @media all and (min-width:2000px){
+        font-size: 3rem;
+}
 }
 &__description{
     color:white;
     line-height:1.8rem ;
     font-size: 1rem;
     max-width:30rem;
+    @media all and (min-width:400px){
+        font-size: 1.2rem;
+        }
+        @media all and (min-width:768px){
+            font-size: 1.4rem;
+            line-height:2.2rem ;
+        }   
+        @media all and (min-width:1000px){
+            font-size: 1.8rem;
+            line-height:2.5rem ;
+           
+        }
+           @media all and (min-width:1400px){
+            font-size:2.8rem;
+            ;
+        }
+        @media all and (min-width:2000px){
+            font-size: 3rem;
+            max-width:50rem;
+            line-height:4rem ;
+    }
 }
 &__img{
 margin:1rem;
 width: 12rem;
 height:auto;
 border:solid 0.2rem rgb(228, 17, 55);
+@media all and (min-width:764px){
+    width: 18rem;
+}   
+   @media all and (min-width:1400px){
+    width: 20rem;
+   } 
+@media all and (min-width:2000px){
+    width: 30rem;   
 }
+   }
 &__fav{
     margin:1rem;
     font-size: 1rem;
@@ -74,13 +137,52 @@ border:solid 0.2rem rgb(228, 17, 55);
     0 0 2px rgb(228, 17, 55), 0 0 2px rgb(127, 38, 66),
     0 0 10px rgb(131, 30, 53), 0 0 15px rgb(127, 38, 62),
     0 0 20px rgb(127, 38, 54); 
+    @media all and (min-width:768px){
+        font-size: 1rem;
+        
+    }   
+    @media all and (min-width:1000px){
+        font-size: 1.5rem;
+       
+    }
+    @media all and (min-width:2000px){
+        font-size: 1.8rem;
+       
+    }
 }
 &__makeFav{
     margin-left:1rem;
     font-size: 0.8rem;
+    @media all and (min-width:768px){
+        font-size: 1rem;
+        
+    }   
+    @media all and (min-width:1000px){
+        font-size: 1.5rem;
+       
+    }
+    @media all and (min-width:2000px){
+        font-size: 1.8rem;
+       
+    }
 }
 &__difficulty{
     font-size:1rem;
     color:rgb(114, 11, 11);
+    @media all and (min-width:400px){
+        font-size: 1.2rem;
+        }
+        @media all and (min-width:768px){
+            font-size: 1.4rem;
+            
+        }   
+        @media all and (min-width:1000px){
+            font-size: 1.8rem;
+           
+        }
+           @media all and (min-width:1400px){
+            font-size:2rem;
+            ;
+        }
 }
 }
