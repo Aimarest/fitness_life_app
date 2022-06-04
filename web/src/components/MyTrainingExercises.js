@@ -35,7 +35,9 @@ const MyTrainingExercises = (props) => {
           <i
             className="fa-solid fa-heart training__fav"
             onClick={() => handleFavourite(exercise.id)}
-          ></i>
+          >
+            <span className="training__makeFav">Not Fav</span>
+          </i>
           <p className="training__description">
             How to do it: {exercise.description}
           </p>

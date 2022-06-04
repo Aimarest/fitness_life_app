@@ -26,16 +26,21 @@ const MyKitchenRecipes = (props) => {
   const renderFavs = () => {
     return favouritesRecipes.map((recipe) => {
       return (
-        <li key={recipe.id} className="card">
+        <li key={recipe.id} className="recipeCard">
+          <h3 className="recipeCard__subtitle ">{recipe.name}</h3>
           <i
-            className="fa-solid fa-heart card__fav"
+            className="fa-solid fa-heart recipeCard__fav"
             onClick={() => handleFavourite(recipe.id)}
-          ></i>
-          <h3 className="card__title uppercase">{recipe.name}</h3>
-          <p className="card__description">
+          >
+            {" "}
+            <span className="recipeCard__makeFav">Not Fav</span>
+          </i>
+          <p className="recipeCard__description">
             How to do it: {recipe.description}
           </p>
-          <p>Difficulty: {recipe.difficulty}</p>
+          <p className="recipeCard__difficulty">
+            Difficulty: {recipe.difficulty}
+          </p>
         </li>
       );
     });
@@ -43,7 +48,7 @@ const MyKitchenRecipes = (props) => {
 
   return (
     <section>
-      <h1>These are your favorite recipes</h1>
+      <h1 className="recipeCard__title">These are your favorite recipes</h1>
       {renderFavouritesRecipes()}
     </section>
   );
