@@ -117,47 +117,65 @@ const App = () => {
       <Header isUserLogged={!!userId} logout={logout} />
       <Routes>
         <Route path="/" element={<Beginning />} />
-        <Route
-          path="/login"
-          element={
-            <Login
-              loginErrorMessage={loginErrorMessage}
-              sendLoginToApi={sendLoginToApi}
-            />
-          }
-        />
-        <Route
-          path="/signup"
-          element={
-            <SignUp
-              signUpErrorMessage={signUpErrorMessage}
-              sendSignUpToApi={sendSignUpToApi}
-            />
-          }
-        />
-        <Route
-          path="/kitchenRecipes"
-          element={<KitchenRecipes AllKitchenRecipes={AllKitchenRecipes} />}
-        />
-        <Route
-          path="/trainingExercises"
-          element={
-            <TrainigExercises AllTrainigExercises={AllTrainigExercises} />
-          }
-        />
-        <Route path="/myKitchenRecipes" element={<MyKitchenRecipes />} />
-        <Route path="/myTrainingExercises" element={<MyTrainingExercises />} />
-        <Route
-          path="/profile"
-          element={
-            <Profile
-              sendDataProfile={sendDataProfile}
-              userName={userName}
-              userEmail={userEmail}
-              userPassword={userPassword}
-            />
-          }
-        />
+        {!userId && (
+          <Route
+            path="/login"
+            element={
+              <Login
+                loginErrorMessage={loginErrorMessage}
+                sendLoginToApi={sendLoginToApi}
+              />
+            }
+          />
+        )}
+        {!userId && (
+          <Route
+            path="/signup"
+            element={
+              <SignUp
+                signUpErrorMessage={signUpErrorMessage}
+                sendSignUpToApi={sendSignUpToApi}
+              />
+            }
+          />
+        )}
+        {!!userId && (
+          <Route
+            path="/kitchenRecipes"
+            element={<KitchenRecipes AllKitchenRecipes={AllKitchenRecipes} />}
+          />
+        )}
+        {!!userId && (
+          <Route
+            path="/trainingExercises"
+            element={
+              <TrainigExercises AllTrainigExercises={AllTrainigExercises} />
+            }
+          />
+        )}
+        {!!userId && (
+          <Route path="/myKitchenRecipes" element={<MyKitchenRecipes />} />
+        )}
+        {!!userId && (
+          <Route
+            path="/myTrainingExercises"
+            element={<MyTrainingExercises />}
+          />
+        )}
+        {!!userId && (
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                sendDataProfile={sendDataProfile}
+                userName={userName}
+                userEmail={userEmail}
+                userPassword={userPassword}
+              />
+            }
+          />
+        )}
+        <Route redirect from="*" to="/" />
       </Routes>
       <Footer />
     </div>

@@ -24,30 +24,33 @@ const MyKitchenRecipes = (props) => {
     });
   };
   const renderFavs = () => {
-    return favouritesRecipes.map((recipe) => {
-      return (
-        <li key={recipe.id} className="recipeCard">
-          <h3 className="recipeCard__subtitle ">{recipe.name}</h3>
-          <i
-            className="fa-solid fa-heart recipeCard__fav"
-            onClick={() => handleFavourite(recipe.id)}
-          >
-            {" "}
-            <span className="recipeCard__makeFav">Not Fav</span>
-          </i>
-          <p className="recipeCard__description">
-            How to do it: {recipe.description}
-          </p>
-          <p className="recipeCard__difficulty">
-            Difficulty: {recipe.difficulty}
-          </p>
-        </li>
-      );
-    });
+    if (favouritesRecipes.length !== 0) {
+      return favouritesRecipes.map((recipe) => {
+        return (
+          <li key={recipe.id} className="recipeCard">
+            <h3 className="recipeCard__subtitle ">{recipe.name}</h3>
+            <i
+              className="fa-solid fa-heart recipeCard__fav"
+              onClick={() => handleFavourite(recipe.id)}
+            >
+              {" "}
+              <span className="recipeCard__makeFav">Not Fav</span>
+            </i>
+            <p className="recipeCard__description">
+              How to do it: {recipe.description}
+            </p>
+            <p className="recipeCard__difficulty">
+              Difficulty: {recipe.difficulty}
+            </p>
+          </li>
+        );
+      });
+    } else {
+      return <p className="errorMessage">There are not favourites </p>;
+    }
   };
-
   return (
-    <section>
+    <section className="myRecipes">
       <h1 className="recipeCard__title">These are your favorite recipes</h1>
       {renderFavouritesRecipes()}
     </section>

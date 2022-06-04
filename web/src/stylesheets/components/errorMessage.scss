@@ -1,9 +1,26 @@
 .errorMessage{
-    font-size:2rem;
+    text-align: center;
+    font-size:1.5rem;
     margin-top:2rem;
     color:rgb(114, 11, 11);
+    @media all and (min-width:768px){
+        font-size:2rem;
+        margin-top:4rem;
+    }
     @media all and (min-width:1000px){
         font-size:2.5rem;
+        margin-top:4rem;
+    }
+    @media all and (min-width:1400px){
+        font-size:3rem;
+        margin-top:4rem;
+    }
+    @media all and (min-width:2000px){
+        font-size:4rem;
+        margin-top:4rem;
+    }
+    @media all and (min-width:2300px){
+        font-size:4.5rem;
         margin-top:4rem;
     }
 }
