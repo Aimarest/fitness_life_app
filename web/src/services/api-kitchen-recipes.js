@@ -1,5 +1,6 @@
 const getAllRecipes = () => {
-  return fetch("http://localhost:4000/kitchenRecipes")
+  const serverPort = process.env.PORT || 4000; 
+  return fetch(`http://${serverPort}/kitchenRecipes`)
     .then((response) => response.json())
     .then((data) => {
       return data;

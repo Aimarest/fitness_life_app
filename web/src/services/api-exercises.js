@@ -1,5 +1,6 @@
 const getAllExercises = () => {
-  return fetch("http://localhost:4000/trainingExercises")
+  const serverPort = process.env.PORT || 4000; 
+  return fetch(`http://${serverPort}/trainingExercises`)
     .then((response) => response.json())
     .then((data) => {
       return data;
