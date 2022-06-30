@@ -9,8 +9,6 @@ server.use(express.json());
 // set template engine middlewares
 server.set("view engine", "ejs");
 
-app.use(express.static(path.resolve(__dirname, "./web/build")));
-
 // init express aplication
 const serverPort = process.env.PORT || 4000; 
 server.listen(serverPort, () => {
@@ -249,3 +247,5 @@ server.post("/myKitchenRecipes", (req, res) => {
 // static server of images
 const staticServerImagesPathWeb = "./src/public-training-images/";
 server.use(express.static(staticServerImagesPathWeb));
+
+server.use(express.static(path.resolve(__dirname, "./web/build")));
