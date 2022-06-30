@@ -9,7 +9,7 @@ server.use(express.json());
 server.set("view engine", "ejs");
 
 // init express aplication
-const serverPort = process.env.PORT || 3000;
+const serverPort = 4000;/*process.env.PORT ||*/ 
 server.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
