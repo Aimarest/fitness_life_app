@@ -1,7 +1,7 @@
 // Sign up
-
+ const serverPort = process.env.PORT || 4000; 
 const sendSignUpToApi = (data) => {
-  const serverPort = process.env.PORT || 4000; 
+ 
   return fetch(`http://${serverPort}/signup`, {
     method: "POST",
     body: JSON.stringify(data),

@@ -9,9 +9,9 @@ server.use(express.json());
 server.set("view engine", "ejs");
 
 // init express aplication
-const serverPort = process.env.PORT || 4000;/*process.env.PORT ||*/ 
+const serverPort = process.env.PORT || 4000; 
 server.listen(serverPort, () => {
-  console.log(`Server listening at http://localhost:${serverPort}`);
+  console.log(`Server listening at http://${serverPort}`);
 });
 //Le decimos a Node que queremos usar esa base de datos:
 const db = new Database("./src/data/database.db", { verbose: console.log });
