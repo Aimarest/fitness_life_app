@@ -1,12 +1,15 @@
 const express = require("express");
 const cors = require("cors");
 const Database = require("better-sqlite3");
+const path = require("path");
 // create and config server
 const server = express();
 server.use(cors());
 server.use(express.json());
 // set template engine middlewares
 server.set("view engine", "ejs");
+
+app.use(express.static(path.resolve(__dirname, "./web/build")));
 
 // init express aplication
 const serverPort = process.env.PORT || 4000; 
