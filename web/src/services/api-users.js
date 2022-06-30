@@ -2,7 +2,7 @@
  const serverPort = process.env.PORT || 4000; 
 const sendSignUpToApi = (data) => {
  
-  return fetch(`http://${serverPort}/signup`, {
+  return fetch(`http://localhost:${serverPort}/signup`, {
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-Type": "application/json" },
@@ -15,7 +15,7 @@ const sendSignUpToApi = (data) => {
 
 //Login
 const sendLoginToApi = (data) => {
-  return fetch(`http://${serverPort}/login`, {
+  return fetch(`http://localhost:${serverPort}/login`, {
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-Type": "application/json" },
@@ -27,7 +27,7 @@ const sendLoginToApi = (data) => {
 };
 //Profile:
 const getProfileFromApi = (userId) => {
-  return fetch(`http://${serverPort}/profile`, {
+  return fetch(`http://localhost:${serverPort}/profile`, {
     headers: {
       "user-id": userId,
     },
@@ -42,7 +42,7 @@ const setRecipeFavourite = (userId, recipeId) => {
   const data = {
     recipeId: recipeId.toString(),
   };
-  return fetch(`http://${serverPort}/myKitchenRecipes`, {
+  return fetch(`http://localhost:${serverPort}/myKitchenRecipes`, {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
@@ -60,7 +60,7 @@ const setExerciseFavourite = (userId, exerciseId) => {
   const data = {
     exerciseId: exerciseId.toString(),
   };
-  return fetch(`http://${serverPort}/myTrainingExercises`, {
+  return fetch(`http://localhost:${serverPort}/myTrainingExercises`, {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
@@ -76,7 +76,7 @@ const setExerciseFavourite = (userId, exerciseId) => {
 };
 //Pedimos los ejercicios del usuario:
 const getUserExercises = (userId) => {
-  return fetch(`http://${serverPort}/myTrainingExercises`, {
+  return fetch(`http://localhost:${serverPort}/myTrainingExercises`, {
     headers: {
       "user-id": userId,
     },
@@ -88,7 +88,7 @@ const getUserExercises = (userId) => {
 };
 //Pedimos las recetas del usuario:
 const getUserRecipes = (userId) => {
-  return fetch(`http://${serverPort}/myKitchenRecipes`, {
+  return fetch(`http://localhost:${serverPort}/myKitchenRecipes`, {
     headers: {
       "user-id": userId,
     },
@@ -105,7 +105,7 @@ const sendProfileToApi = (userId, data) => {
     email: data.email,
     password: data.password,
   };
-  return fetch(`http://${serverPort}/profile`, {
+  return fetch(`http://localhost:${serverPort}/profile`, {
     method: "POST",
     body: JSON.stringify(bodyParams),
     headers: {
